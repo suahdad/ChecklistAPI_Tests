@@ -23,7 +23,7 @@ namespace ChecklistAPI_Tests
             var context = new SampleDBContext(useSQLLite: true).Context;
             var service = new UserService(appSettings,context);
 
-            var sampleToken = 
+            //var sampleToken = 
 
 
         }
