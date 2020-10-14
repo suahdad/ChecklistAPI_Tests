@@ -72,9 +72,16 @@ namespace ChecklistAPI_Tests
                     Password = "password"
                 };
 
-            Condition condition = new Condition()
+            HashSet<Condition> condition = new HashSet<Condition>
             {
-                ID = "OK"
+                new Condition()
+                {
+                    ID = "OK"
+                },
+                new Condition()
+                {
+                    ID = "OTHER"
+                }
             };
 
             Component component = new Component()
@@ -110,8 +117,8 @@ namespace ChecklistAPI_Tests
             };
 
             Context.Users.Add(user);
-            Context.Components.Add(component);
-            Context.Conditions.Add(condition);
+            Context.Components.AddRange(component);
+            Context.Conditions.AddRange(condition);
             Context.Equipments.AddRange(equipment);
             Context.Equipment_Types.AddRange(equipmentType);
             
