@@ -508,3 +508,5 @@ C:\Users\jpasol\Desktop\Repository\ChecklistAPI_Tests\bin\Debug\netcoreapp3.1\Sy
 C:\Users\jpasol\Desktop\Repository\ChecklistAPI_Tests\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
 C:\Users\jpasol\Desktop\Repository\ChecklistAPI_Tests\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\jpasol\Desktop\Repository\ChecklistAPI_Tests\obj\Debug\netcoreapp3.1\ChecklistAPI_Tests.csproj.CoreCompileInputs.cache
+C:\Users\jpasol\Desktop\Repository\ChecklistAPI_Tests\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\jpasol\Desktop\Repository\ChecklistAPI_Tests\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
