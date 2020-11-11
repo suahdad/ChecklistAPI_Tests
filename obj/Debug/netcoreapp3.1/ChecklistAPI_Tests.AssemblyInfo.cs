@@ -11,7 +11,7 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("ChecklistAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\jpasol\\Desktop\\Repository\\ChecklistAPI", "ChecklistAPI.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("ChecklistAPI", "C:\\Users\\jpasol\\Desktop\\Repository\\ChecklistAPI", "ChecklistAPI.csproj", "0")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("EquipmentChecklistDataAccess, Version=1.0.0.0, Culture=neutral, PublicKeyToken=nu" +
     "ll", "C:\\Users\\jpasol\\Desktop\\Repository\\EquipmentChecklistDataAccess", "EquipmentChecklistDataAccess.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChecklistAPI_Tests")]
