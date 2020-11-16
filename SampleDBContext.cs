@@ -116,11 +116,18 @@ namespace ChecklistAPI_Tests
                 }
             };
 
+            Question Question = new Question()
+            {
+                Equipment_TypeID = "PM",
+                ComponentID = "TYRES",
+            };
+
             Context.Users.Add(user);
             Context.Components.AddRange(component);
             Context.Conditions.AddRange(condition);
             Context.Equipments.AddRange(equipment);
             Context.Equipment_Types.AddRange(equipmentType);
+            Context.Questions.Add(Question);
             
         }
 
