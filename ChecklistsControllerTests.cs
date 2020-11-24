@@ -62,6 +62,59 @@ namespace ChecklistAPI_Tests
         [Fact]
         public async Task ShouldGetChecklist()
         {
+            var context = new SampleDBContext(useSQLLite: true).Context;
+            var controller = new ChecklistsController(context);
+
+            HashSet<Checklist_Item> checklistItems = new HashSet<Checklist_Item>
+                {
+                    new Checklist_Item()
+                    {
+                        Equipment_TypeID="PM",
+                        ComponentID="TYRES",
+                        Question = context.Questions.Find(new object[]{"PM","TYRES"}),
+                        ConditionID="OTHER"
+                    }
+                };
+
+            Checklist checklist = new Checklist()
+            {
+                Checklist_Items = checklistItems,
+                Date_Created = new DateTime(),
+                EquipmentID = "PM01",
+                UserID = "TEST"
+            };
+
+            HashSet<Checklist_Item> checklistItems2 = new HashSet<Checklist_Item>
+                {
+                    new Checklist_Item()
+                    {
+                        Equipment_TypeID="PM",
+                        ComponentID="TYRES",
+                        ConditionID="OK"
+                    }
+                };
+
+            Checklist checklist2 = new Checklist()
+            {
+                Checklist_Items = checklistItems2,
+                Date_Created = new DateTime(),
+                EquipmentID = "PM01",
+                UserID = "TEST"
+            };
+
+
+            await controller.PostChecklist(checklist);
+            await controller.PostChecklist(checklist2);
+            var test = await controller.GetChecklists();
+
+            Assert.Equal(2, test.Value.Count(x => x.UserID == "TEST"));
+        }
+
+        [Fact]
+        public async Task ShouldGetChecklistwQuestion()
+        {
+            var context = new SampleDBContext(useSQLLite: true).Context;
+            var controller = new ChecklistsController(context);
 
             HashSet<Checklist_Item> checklistItems = new HashSet<Checklist_Item>
                 {
@@ -99,26 +152,29 @@ namespace ChecklistAPI_Tests
                 UserID = "TEST"
             };
 
-            var context = new SampleDBContext(useSQLLite: true).Context;
-            var controller = new ChecklistsController(context);
+
             await controller.PostChecklist(checklist);
             await controller.PostChecklist(checklist2);
             var test = await controller.GetChecklists();
 
-            Assert.Equal(2, test.Value.Count(x => x.UserID == "TEST"));
+            var wQuestions = test.Value.Where(c => c.Checklist_Items.Where(b => b.Question != null).Any());
+
+            Assert.Equal(2,wQuestions.Count());
         }
 
 
         [Fact]
         public async Task ShouldSave_ifValid_EquipmentEquipmentTypeConditionComponent()
         {
-
+            var context = new SampleDBContext(useSQLLite: true).Context;
+            var controller = new ChecklistsController(context);
             HashSet<Checklist_Item> checklistItems = new HashSet<Checklist_Item>
                 {
                     new Checklist_Item()
-                    {
+                    {   
                         Equipment_TypeID="PM",
                         ComponentID="TYRES",
+                        Question = context.Questions.Find(new object[]{"PM","TYRES"}),
                         ConditionID="OK"
                     }
                 };
@@ -131,8 +187,7 @@ namespace ChecklistAPI_Tests
                 UserID = "TEST"
             };
 
-            var context = new SampleDBContext(useSQLLite: true).Context;
-            var controller = new ChecklistsController(context);
+
 
             await controller.PostChecklist(checklist);
 
