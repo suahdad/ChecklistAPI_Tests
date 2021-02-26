@@ -47,7 +47,7 @@ namespace ChecklistAPI_Tests
             _context.SaveChanges();
 
             _controller.PostVoucher(_voucher);
-            var _result = _controller.GetVoucher().Result.Value.ToArray();
+            var _result = _controller.GetVouchers().Result.Value.ToArray();
 
             Assert.NotEqual(_voucher.Validity, _result[0].Validity);
         }
